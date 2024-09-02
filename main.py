@@ -1,4 +1,4 @@
-from collections import Counter, OrderedDict
+from collections import Counter
 
 def main():
     book_path = "./books/frankenstein.txt"
