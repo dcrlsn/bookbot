@@ -1,4 +1,5 @@
 from collections import Counter
+from functools import reduce
 
 def main():
     book_path = "./books/frankenstein.txt"
@@ -26,9 +27,7 @@ def sort_on(dict):
 def generate_report(dict, book_path):
     mutated_dict = sorted(dict.items(), key=lambda x:x[1], reverse=True)
     report = f"--- Begin report of {book_path} ---\n"
-    for k,v in mutated_dict:
-        if k.isalpha():
-            report += f"'{k}' character was found {v} times\n"
+    report += reduce(lambda acc, x: acc + f"'{x[0]}' character was found {x[1]} times.\n" if x[0].isalpha() else acc, mutated_dict, "") 
     report += "--- End report ---"
     print(report)
 
